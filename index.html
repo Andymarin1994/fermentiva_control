@@ -9,7 +9,7 @@
 <body>
     <header>
         <!-- Aquí agrega tu logo -->
-        <!--img src="ruta_del_logo" alt="Logo Fermentiva Control" id="logo"-->
+        <img src="ruta_del_logo" alt="Logo Fermentiva Control" id="logo">
         <h1>FERMENTIVA CONTROL</h1>
         <p>Desarrollado por Andres Ovalle Marin, 2024 versión 1.0.0.1</p>
     </header>
@@ -29,7 +29,9 @@
                 </select>
                 <input type="number" id="product-price" placeholder="Precio">
                 <input type="text" id="product-observations" placeholder="Observaciones">
+                <button id="add-product-btn">Añadir Producto</button>
             </div>
+            <div id="product-list"></div>
         </section>
         <section>
             <h2>Pedidos Actuales - <span id="current-date"></span></h2>
