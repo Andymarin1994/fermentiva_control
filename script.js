@@ -1,10 +1,27 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const addProductBtn = document.getElementById('add-product-btn');
+    const productList = document.getElementById('product-list');
     const addOrderBtn = document.getElementById('add-order-btn');
     const orderList = document.getElementById('order-list');
     const exportBtn = document.getElementById('export-btn');
     const currentDate = document.getElementById('current-date');
 
     currentDate.textContent = new Date().toLocaleDateString();
+
+    addProductBtn.addEventListener('click', function() {
+        const productName = document.getElementById('product-select').value;
+        const productPrice = document.getElementById('product-price').value.trim();
+        const productObservations = document.getElementById('product-observations').value.trim();
+
+        if (productName && productPrice) {
+            const productItem = document.createElement('div');
+            productItem.textContent = `${productName} - $${productPrice} - ${productObservations}`;
+            productList.appendChild(productItem);
+
+            document.getElementById('product-price').value = '';
+            document.getElementById('product-observations').value = '';
+        }
+    });
 
     addOrderBtn.addEventListener('click', function() {
         const customerName = document.getElementById('customer-name').value.trim();
@@ -14,29 +31,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (customerName && selectedProduct && orderPrice) {
             const orderItem = document.createElement('div');
-            
-            // Crear elementos para cada parte del pedido
-            const nameElement = document.createElement('span');
-            const productElement = document.createElement('span');
-            const priceElement = document.createElement('span');
-            const observationsElement = document.createElement('span');
-
-            // Asignar contenido a cada elemento
-            nameElement.textContent = customerName;
-            productElement.textContent = selectedProduct;
-            priceElement.textContent = `$${orderPrice}`;
-            observationsElement.textContent = orderObservations;
-
-            // Añadir elementos al elemento principal del pedido
-            orderItem.appendChild(nameElement);
-            orderItem.appendChild(productElement);
-            orderItem.appendChild(priceElement);
-            orderItem.appendChild(observationsElement);
-
-            // Añadir el pedido a la lista de pedidos
+            orderItem.textContent = `${customerName} - ${selectedProduct} - $${orderPrice} - ${orderObservations}`;
             orderList.appendChild(orderItem);
 
-            // Limpiar campos de entrada
             document.getElementById('customer-name').value = '';
             document.getElementById('order-price').value = '';
             document.getElementById('order-observations').value = '';
@@ -50,12 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const orderItems = orderList.querySelectorAll('div');
 
         orderItems.forEach(item => {
-            const columns = [
-                item.children[0].textContent,
-                item.children[1].textContent,
-                item.children[2].textContent,
-                item.children[3].textContent
-            ];
+            const columns = item.textContent.split(' - ');
             rows.push(columns);
         });
 
@@ -64,12 +56,4 @@ document.addEventListener('DOMContentLoaded', function() {
             csvContent += row.join(',') + '\r\n';
         });
 
-        const link = document.createElement('a');
-        link.setAttribute('href', encodeURI(csvContent));
-        link.setAttribute('download', `VENTAS_${new Date().toLocaleDateString()}.csv`);
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    });
-});
-
+        const link[_{{{CITATION{{{_1{](https://github.com/la9una/web/tree/ba1073ae044ebb7b538a3b13f0f9598f7c410bb6/docs%2Fbootstrap%2Falignci.md)[_{{{CITATION{{{_2{](https://github.com/CLONATORE/markdowns/tree/82cfb03683ceb807a7091de48045e6a7485acd72/webpack.md)
