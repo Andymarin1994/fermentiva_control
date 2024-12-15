@@ -1,0 +1,93 @@
+/* Estilos generales */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(135deg, #ff9a9e, #fecfef);
+    color: #333;
+}
+
+header, footer {
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    background-color: #ff6b6b;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#logo {
+    width: 100px; /* Ajusta el tamaño del logo según tu preferencia */
+    margin-bottom: 10px;
+}
+
+h1, h2 {
+    margin: 0;
+}
+
+.input-section, .order-inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    margin: 20px 0;
+}
+
+.product-inputs, .order-inputs {
+    display: flex;
+    justify-content: space-between; /* Alinea los cuadros en horizontal */
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+}
+
+input, select, button {
+    padding: 15px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    flex: 1;
+}
+
+button {
+    background-color: #ff6b6b;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #ff4757;
+}
+
+#product-list, #order-list {
+    width: 100%;
+    max-width: 800px;
+    margin-top: 20px;
+}
+
+#product-list div, #order-list div {
+    display: flex;
+    justify-content: space-between;
+    background: white;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Diseño responsivo */
+@media (max-width: 600px) {
+    .product-inputs, .order-inputs {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    input, select {
+        width: 100%;
+    }
+}

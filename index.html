@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FERMENTIVA CONTROL</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <!-- Aquí agrega tu logo -->
+        <!--img src="ruta_del_logo" alt="Logo Fermentiva Control" id="logo"-->
+        <h1>FERMENTIVA CONTROL</h1>
+        <p>Desarrollado por Andres Ovalle Marin, 2024 versión 1.0.0.1</p>
+    </header>
+    <main>
+        <section class="input-section">
+            <h2>Productos</h2>
+            <div class="product-inputs">
+                <select id="product-select">
+                    <option value="Hidromiel de Champa">Hidromiel de Champa</option>
+                    <option value="Hidromiel de Camu Camu">Hidromiel de Camu Camu</option>
+                    <option value="Vino de Maíz Morado">Vino de Maíz Morado</option>
+                    <option value="Vino de Camu Camu con Fresa">Vino de Camu Camu con Fresa</option>
+                    <option value="Fabkua de Maíz Morado">Fabkua de Maíz Morado</option>
+                    <option value="Probióticas Araza">Probióticas Araza</option>
+                    <option value="Probióticas Champa">Probióticas Champa</option>
+                    <option value="Probióticas Asai">Probióticas Asai</option>
+                </select>
+                <input type="number" id="product-price" placeholder="Precio">
+                <input type="text" id="product-observations" placeholder="Observaciones">
+            </div>
+        </section>
+        <section>
+            <h2>Pedidos Actuales - <span id="current-date"></span></h2>
+            <div class="order-inputs">
+                <input type="text" id="customer-name" placeholder="Nombre del Cliente">
+                <select id="order-product-select">
+                    <option value="">Selecciona un producto</option>
+                    <option value="Hidromiel de Champa">Hidromiel de Champa</option>
+                    <option value="Hidromiel de Camu Camu">Hidromiel de Camu Camu</option>
+                    <option value="Vino de Maíz Morado">Vino de Maíz Morado</option>
+                    <option value="Vino de Camu Camu con Fresa">Vino de Camu Camu con Fresa</option>
+                    <option value="Fabkua de Maíz Morado">Fabkua de Maíz Morado</option>
+                    <option value="Probióticas Araza">Probióticas Araza</option>
+                    <option value="Probióticas Champa">Probióticas Champa</option>
+                    <option value="Probióticas Asai">Probióticas Asai</option>
+                </select>
+                <input type="number" id="order-price" placeholder="Valor">
+                <input type="text" id="order-observations" placeholder="Observaciones">
+                <button id="add-order-btn">Añadir Pedido</button>
+            </div>
+            <div id="order-list"></div>
+            <button id="export-btn">Exportar a Excel</button>
+        </section>
+    </main>
+    <footer>
+        <p>✨ ¡Disfruta de tus bebidas refrescantes con estilo! ✨</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
