@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     currentDate.textContent = new Date().toLocaleDateString();
 
+    // Evento para añadir productos a la lista de productos
     addProductBtn.addEventListener('click', function() {
         const productName = document.getElementById('product-select').value;
         const productPrice = document.getElementById('product-price').value.trim();
@@ -15,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (productName && productPrice) {
             const productItem = document.createElement('div');
-            productItem.textContent = `${productName} - $${productPrice} - ${productObservations}`;
+            productItem.innerHTML = `<span>${productName}</span> - <span>$${productPrice}</span> - <span>${productObservations}</span>`;
             productList.appendChild(productItem);
 
             document.getElementById('product-price').value = '';
@@ -23,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Evento para añadir pedidos a la lista de pedidos
     addOrderBtn.addEventListener('click', function() {
         const customerName = document.getElementById('customer-name').value.trim();
         const selectedProduct = document.getElementById('order-product-select').value;
@@ -31,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (customerName && selectedProduct && orderPrice) {
             const orderItem = document.createElement('div');
-            orderItem.textContent = `${customerName} - ${selectedProduct} - $${orderPrice} - ${orderObservations}`;
+            orderItem.innerHTML = `<span>${customerName}</span> - <span>${selectedProduct}</span> - <span>$${orderPrice}</span> - <span>${orderObservations}</span>`;
             orderList.appendChild(orderItem);
 
             document.getElementById('customer-name').value = '';
@@ -42,12 +44,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Evento para exportar la lista de pedidos a un archivo CSV
     exportBtn.addEventListener('click', function() {
         const rows = [['Nombre del Cliente', 'Producto', 'Valor', 'Observaciones']];
         const orderItems = orderList.querySelectorAll('div');
 
         orderItems.forEach(item => {
-            const columns = item.textContent.split(' - ');
+            const columns = Array.from(item.querySelectorAll('span')).map(span => span.textContent);
             rows.push(columns);
         });
 
@@ -56,4 +59,11 @@ document.addEventListener('DOMContentLoaded', function() {
             csvContent += row.join(',') + '\r\n';
         });
 
-        const link[_{{{CITATION{{{_1{](https://github.com/la9una/web/tree/ba1073ae044ebb7b538a3b13f0f9598f7c410bb6/docs%2Fbootstrap%2Falignci.md)[_{{{CITATION{{{_2{](https://github.com/CLONATORE/markdowns/tree/82cfb03683ceb807a7091de48045e6a7485acd72/webpack.md)
+        const link = document.createElement('a');
+        link.setAttribute('href', encodeURI(csvContent));
+        link.setAttribute('download', `VENTAS_${new Date().toLocaleDateString()}.csv`);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    });
+});
