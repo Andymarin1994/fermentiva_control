@@ -14,12 +14,34 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (customerName && selectedProduct && orderPrice) {
             const orderItem = document.createElement('div');
-            orderItem.textContent = `${customerName} - ${selectedProduct} - $${orderPrice} - ${orderObservations}`;
+            
+            // Crear elementos para cada parte del pedido
+            const nameElement = document.createElement('span');
+            const productElement = document.createElement('span');
+            const priceElement = document.createElement('span');
+            const observationsElement = document.createElement('span');
+
+            // Asignar contenido a cada elemento
+            nameElement.textContent = customerName;
+            productElement.textContent = selectedProduct;
+            priceElement.textContent = `$${orderPrice}`;
+            observationsElement.textContent = orderObservations;
+
+            // Añadir elementos al elemento principal del pedido
+            orderItem.appendChild(nameElement);
+            orderItem.appendChild(productElement);
+            orderItem.appendChild(priceElement);
+            orderItem.appendChild(observationsElement);
+
+            // Añadir el pedido a la lista de pedidos
             orderList.appendChild(orderItem);
 
+            // Limpiar campos de entrada
             document.getElementById('customer-name').value = '';
             document.getElementById('order-price').value = '';
             document.getElementById('order-observations').value = '';
+        } else {
+            alert("Por favor, completa todos los campos antes de agregar el pedido.");
         }
     });
 
@@ -28,7 +50,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const orderItems = orderList.querySelectorAll('div');
 
         orderItems.forEach(item => {
-            const columns = item.textContent.split(' - ');
+            const columns = [
+                item.children[0].textContent,
+                item.children[1].textContent,
+                item.children[2].textContent,
+                item.children[3].textContent
+            ];
             rows.push(columns);
         });
 
@@ -45,3 +72,4 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.removeChild(link);
     });
 });
+
